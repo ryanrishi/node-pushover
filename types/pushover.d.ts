@@ -81,22 +81,69 @@ declare class Pushover {
     updateSounds(): void;
     /**
      * Sends a message using Pushover.
-     * @param {object} obj - The message object to send.
-     * @param {string} obj.token - The API token.
-     * @param {string} obj.user - The user key.
-     * @param {string} [obj.file] - Optional file attachment.
+     * @param {Message} obj - The message to send.
      * @param {PushoverCallback} fn - The callback function that handles the response.
      */
-    send(obj: {
-        token: string;
-        user: string;
-        file?: string;
-    }, fn: PushoverCallback): void;
+    send(obj: Message, fn: PushoverCallback): void;
 }
 declare namespace Pushover {
-    export { PushoverCallback };
+    export { PushoverCallback, Message };
 }
 /**
  * A callback function that handles the result of the Pushover send operation.
  */
 type PushoverCallback = (error: Error | null, result: any) => any;
+type Message = {
+    /**
+     * - The message to send
+     */
+    message: string;
+    /**
+     * - The API token.
+     */
+    token?: string;
+    /**
+     * - The user key.
+     */
+    user?: string;
+    /**
+     * - A file path or binary image attachment to send with the message
+     */
+    file?: string | object;
+    /**
+     * - The name of one of your devices to send just to that device instead of all devices
+     */
+    device?: string;
+    /**
+     * - Set to 1 to enable HTML parsing
+     */
+    html?: string;
+    /**
+     * - A value of -2, -1, 0 (default), 1, or 2
+     */
+    priority?: string;
+    /**
+     * - The name of a supported sound to override your default sound choice
+     */
+    sound?: string;
+    /**
+     * - A Unix timestamp of a time to display instead of when our API received it
+     */
+    timestamp?: string;
+    /**
+     * - Your message's title, otherwise your app's name is used
+     */
+    title?: string;
+    /**
+     * - A number of seconds that the message will live, before being deleted automatically
+     */
+    ttl?: string;
+    /**
+     * - A supplementary URL to show with your message
+     */
+    url?: string;
+    /**
+     * - A title for the URL specified as the url parameter, otherwise just the URL is shown
+     */
+    url_title?: string;
+};

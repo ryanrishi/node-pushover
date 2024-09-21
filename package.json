@@ -8,11 +8,13 @@
     "type": "git",
     "url": "https://github.com/qbit/node-pushover.git"
   },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
   "engines": {
     "node": "*"
   },
   "scripts": {
-    "test": "standard && pkill tinyproxy ; tinyproxy -c test/tinyproxy.conf && set -e; for t in test/*.js; do node $t; done",
-    "build": "npx -p typescript tsc lib/**.js --declaration --allowJs --emitDeclarationOnly --outDir types"
+    "test": "standard && pkill tinyproxy ; tinyproxy -c test/tinyproxy.conf && set -e; for t in test/*.js; do node $t; done"
   }
 }

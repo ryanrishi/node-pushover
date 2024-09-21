@@ -172,3 +172,10 @@ for ( var i = 0, l = users.length; i < l; i++ ) {
   })
 }
 ```
+
+## Development
+### Generate new TypeScript definitions
+```sh
+$ npx -p typescript tsc lib/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types
+```
+
